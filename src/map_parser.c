@@ -6,20 +6,20 @@
 /*   By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 15:34:53 by hulescur          #+#    #+#             */
-/*   Updated: 2025/12/17 17:59:01 by hulescur         ###   ########.fr       */
+/*   Updated: 2025/12/19 16:49:01 by hulescur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int	*init_vars(int *vars)
+int	*init_vars(int *var)
 {
 	int	i;
 
 	i = 0;
-	while (vars[i])
-		vars[i++] = 0;
-	return (vars);
+	while (var[i])
+		var[i++] = 0;
+	return (var);
 }
 
 int	same_len(char **map)
@@ -58,46 +58,136 @@ int	closed_map(char **map)
 
 int	pec01(char **map)
 {
-	int	vars[5];
+	int	var[5];
 	
-	vars[0] = 0;
-	vars[1] = 0;
-	vars[2] = 0;
-	vars[3] = -1;
-	while (map[++vars[3]])
+	var[0] = 0;
+	var[1] = 0;
+	var[2] = 0;
+	var[3] = -1;
+	while (map[++var[3]])
 	{
-		vars[4] = -1;
-		while (map[vars[3]][++vars[4]])
+		var[4] = -1;
+		while (map[var[3]][++var[4]])
 		{
-			if (map[vars[3]][vars[4]] == 'P')
-				vars[0]++;
-			else if (map[vars[3]][vars[4]] == 'E')
-				vars[1]++;
-			else if (map[vars[3]][vars[4]] == 'C')
-				vars[2]++;
-			else if (map[vars[3]][vars[4]] != '1' && map[vars[3]][vars[4]] != '0')
+			if (map[var[3]][var[4]] == 'P')
+				var[0]++;
+			else if (map[var[3]][var[4]] == 'E')
+				var[1]++;
+			else if (map[var[3]][var[4]] == 'C')
+				var[2]++;
+			else if (map[var[3]][var[4]] != '1' && map[var[3]][var[4]] != '0')
 				return (0);
 		}
 	}
-	if (vars[0] != 1 || vars[1] != 1 || vars[2] < 1)
+	if (var[0] != 1 || var[1] != 1 || var[2] < 1)
 		return (0);
 	return (1);
 }
 
-int	map_valid(char **map)
+int	rep_path(char *u, char *d, char *l, char *r)
 {
-	int i;
-	int same = same_len(map);
-	int closed = closed_map(map);
-	int pec = pec01(map);
+	int change;
+	
+	change = 0;
+	if (*u == '0' || *u == 'C' || *u == 'E')
+	{
+		*u = 'P';
+		change = 1;
+	}
+	if (*d == '0' || *d == 'C' || *d == 'E')
+	{
+		*d = 'P';
+		change = 1;
+	}
+	if (*l == '0' || *l == 'C' || *l == 'E')
+	{
+		*l = 'P';
+		change = 1;
+	}
+	if (*r == '0' || *r == 'C' || *r == 'E')
+	{
+		*r = 'P';
+		change = 1;
+	}
+	return (change);
+}
+
+int	check_path(char **map)
+{
+	int	i;
+	int	j;
 	
 	i = 0;
-	if (!same_len(map) || !closed_map(map) || !pec01(map))
+	while (map[++i + 1])
 	{
-		ft_putstr("Map is not valid");
+		j = 0;
+		while (map[i][++j + 1])
+		{
+			if (map[i][j] == 'C' || map[i][j] == 'E')
+				return (0);
+		}
+	}
+	return (1);
+}
+
+int	c_reachable(char **map)
+{
+	int l = 0;
+	int	loop;
+	int	change;
+	int	i;
+	int	j;
+	
+	loop = map_h(map) + 1;
+	if (map_w(map) > map_h(map))
+	loop = map_w(map) + 1;
+	while (loop--)
+	{
+		change = 0;
+		i = 0;
+		while (map[++i + 1])
+		{
+			j = 0;
+			while (map[i][++j + 1])
+			if (map[i][j] == 'P')
+			{
+				change = rep_path(&map[i - 1][j], &map[i + 1][j], &map[i][j - 1], &map[i][j + 1]);
+				while (map[l])
+					printf("%s\n", map[l++]);
+				printf("%d\n", change);
+				printf("\n");
+				l = 0;
+			}
+		}
+		if (!change)
+		break;
+	}
+	return (check_path(map));
+}
+
+int	map_valid(char **map)
+{
+	if (!same_len(map))
+	{
+		ft_putstr("Map is not rectangular");
 		return (0);
 	}
-	ft_putstr("Map is valid");
+	if (!closed_map(map))
+	{
+		ft_putstr("Map is not surrounded by walls");
+		return (0);
+	}
+	if (!pec01(map))
+	{
+		ft_putstr("Map does not contain the correct number of elements");
+		return (0);
+	}
+	if (!c_reachable(map))
+	{
+		ft_putstr("Map does not contain valid elements");
+		return (0);
+	}
+	ft_putstr("Map is VALID");
 	return (1);
 }
 
