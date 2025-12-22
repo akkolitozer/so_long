@@ -6,7 +6,7 @@
 /*   By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 15:17:32 by hulescur          #+#    #+#             */
-/*   Updated: 2025/12/19 13:05:33 by hulescur         ###   ########.fr       */
+/*   Updated: 2025/12/22 15:36:11 by hulescur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>
-# include "../mlx/mlx.h"
+# include "../minilx/mlx.h"
 # include "../gnl/get_next_line.h"
 # include "../libft/libft.h"
 

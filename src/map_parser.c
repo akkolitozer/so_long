@@ -6,7 +6,7 @@
 /*   By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 15:34:53 by hulescur          #+#    #+#             */
-/*   Updated: 2025/12/19 16:49:01 by hulescur         ###   ########.fr       */
+/*   Updated: 2025/12/22 16:06:14 by hulescur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,27 +138,25 @@ int	c_reachable(char **map)
 	int	i;
 	int	j;
 	
-	loop = map_h(map) + 1;
+	loop = (map_h(map) - 2) * 2;
 	if (map_w(map) > map_h(map))
-	loop = map_w(map) + 1;
-	while (loop--)
+	loop = (map_w(map) - 2) * 2;
+	while (loop)
 	{
 		change = 0;
+		printf("\nLoops left : %d\n", loop--);	
 		i = 0;
 		while (map[++i + 1])
 		{
 			j = 0;
 			while (map[i][++j + 1])
 			if (map[i][j] == 'P')
-			{
-				change = rep_path(&map[i - 1][j], &map[i + 1][j], &map[i][j - 1], &map[i][j + 1]);
-				while (map[l])
-					printf("%s\n", map[l++]);
-				printf("%d\n", change);
-				printf("\n");
-				l = 0;
-			}
+				change += rep_path(&map[i - 1][j], &map[i + 1][j], &map[i][j - 1], &map[i][j + 1]);
 		}
+		while (map[l])
+			printf("%s\n", map[l++]);
+		l = 0;
+		printf("Change : %d\n\n", change);
 		if (!change)
 		break;
 	}
