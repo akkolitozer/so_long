@@ -6,13 +6,13 @@
 /*   By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 16:05:28 by hulescur          #+#    #+#             */
-/*   Updated: 2025/12/17 16:06:26 by hulescur         ###   ########.fr       */
+/*   Updated: 2026/01/15 14:55:26 by hulescur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr(char *str)
+int	ft_putstr(char *str)
 {
 	int	i;
 
@@ -22,4 +22,5 @@ void	ft_putstr(char *str)
 		write(1, &str[i], 1);
 		i++;
 	}
+	return (i);
 }
