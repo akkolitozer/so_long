@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   minilx_init.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/17 16:05:28 by hulescur          #+#    #+#             */
-/*   Updated: 2026/01/19 17:12:34 by hulescur         ###   ########.fr       */
+/*   Created: 2026/01/20 17:01:21 by hulescur          #+#    #+#             */
+/*   Updated: 2026/01/20 18:57:00 by hulescur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/so_long.h"
 
-int	ft_putstr(char *str)
+int	close_win(void *minilx, void *minilx_win)
 {
-	int	i;
+	mlx_destroy_window(minilx, minilx_win);
+	return (0);
+}
 
-	i = 0;
-	while (str[i])
-	{
-		write(1, &str[i], 1);
-		i++;
-	}
-	return (i);
+void minilx_init(void)
+{
+	void	*minilx;
+	void	*minilx_win;
+	minilx = mlx_init();
+	minilx_win = mlx_new_window(minilx, 1000, 1000, "so_long");\
+	mlx_hook(minilx_win, 17, 0, close_win, minilx);
+	mlx_loop(minilx);
 }

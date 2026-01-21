@@ -6,7 +6,7 @@
 /*   By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 15:44:35 by hulescur          #+#    #+#             */
-/*   Updated: 2025/12/19 16:11:05 by hulescur         ###   ########.fr       */
+/*   Updated: 2026/01/20 16:47:54 by hulescur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ char	*fill_stash(int fd, char *stash)
 char	*get_valid_line(char *stash)
 {
 	char	*line;
-	size_t	i;
+	int		i;
 
 	i = 0;
 	if (!stash || !stash[0])
@@ -65,8 +65,8 @@ char	*get_valid_line(char *stash)
 char	*clear_stash(char *stash)
 {
 	char	*new;
-	size_t	i;
-	size_t	j;
+	int		i;
+	int		j;
 
 	i = 0;
 	while (stash[i] && stash[i] != '\n')

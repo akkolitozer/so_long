@@ -6,15 +6,15 @@
 /*   By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 17:57:42 by hulescur          #+#    #+#             */
-/*   Updated: 2025/12/17 16:49:04 by hulescur         ###   ########.fr       */
+/*   Updated: 2026/01/20 16:47:33 by hulescur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	ft_strlen(const char *s)
+int	ft_strlen(const char *s)
 {
-	size_t	i;
+	int	i;
 
 	if (!s)
 		return (0);
@@ -42,9 +42,9 @@ char	*ft_strchr(const char *s, int c)
 char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*sc;
-	size_t	i;
-	size_t	j;
-	size_t	totalen;
+	int	i;
+	int	j;
+	int	totalen;
 
 	if (!s1 && !s2)
 		return (NULL);

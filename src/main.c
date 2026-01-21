@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/17 16:05:28 by hulescur          #+#    #+#             */
-/*   Updated: 2026/01/19 17:12:34 by hulescur         ###   ########.fr       */
+/*   Created: 2026/01/20 16:26:41 by hulescur          #+#    #+#             */
+/*   Updated: 2026/01/20 17:07:39 by hulescur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/so_long.h"
 
-int	ft_putstr(char *str)
+int	main(int ac, char **av)
 {
-	int	i;
-
-	i = 0;
-	while (str[i])
+	char	**map;
+	if (ac == 2)
 	{
-		write(1, &str[i], 1);
-		i++;
+		map = map_open(av[1]);
+		if(!map_not_valid(map))
+			minilx_init();
 	}
-	return (i);
+	return (0);
 }

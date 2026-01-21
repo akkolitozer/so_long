@@ -6,7 +6,7 @@
 /*   By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 15:17:32 by hulescur          #+#    #+#             */
-/*   Updated: 2026/01/15 18:41:47 by hulescur         ###   ########.fr       */
+/*   Updated: 2026/01/20 17:16:12 by hulescur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>
-# include "../minilx/mlx.h"
+# include "../mlx/mlx.h"
 # include "../gnl/get_next_line.h"
 # include "../libft/libft.h"
 
@@ -33,6 +33,7 @@ int		check_exit(char **map);
 int		check_path(char **map);
 int		ce_reachable(char **map);
 int		map_not_valid(char **map);
+void	minilx_init(void);
 
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 15:21:56 by hulescur          #+#    #+#             */
-/*   Updated: 2025/12/19 16:11:11 by hulescur         ###   ########.fr       */
+/*   Updated: 2026/01/20 16:48:53 by hulescur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	map_h(char **map)
 {
-	int	h; 
+	int	h;
 
 	h = 0;
 	while (map[h])
@@ -37,7 +37,8 @@ int	count_lines(char *map_path)
 	int		fd;
 	int		count;
 	char	*line;
-	
+
+	count = 0;
 	fd = open(map_path, O_RDONLY);
 	if (fd < 0)
 		return (0);
