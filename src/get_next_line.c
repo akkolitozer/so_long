@@ -6,11 +6,11 @@
 /*   By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 15:44:35 by hulescur          #+#    #+#             */
-/*   Updated: 2026/01/20 16:47:54 by hulescur         ###   ########.fr       */
+/*   Updated: 2026/01/21 14:33:36 by hulescur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "../includes/get_next_line.h"
 
 char	*fill_stash(int fd, char *stash)
 {

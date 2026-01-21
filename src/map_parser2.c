@@ -6,7 +6,7 @@
 /*   By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 18:36:42 by hulescur          #+#    #+#             */
-/*   Updated: 2026/01/20 17:03:30 by hulescur         ###   ########.fr       */
+/*   Updated: 2026/01/21 15:28:54 by hulescur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,10 +83,22 @@ int	map_not_valid(char **map)
 	if (!same_len(map))
 		i += ft_putstr("Error\nMap is not rectangular\n");
 	if (!closed_map(map))
-		i += ft_putstr("Error\nMap is not surrounded by walls\n");
+	{
+		if (!i)
+			ft_putstr("Error\n");
+		i += ft_putstr("Map is not surrounded by walls\n");
+	}
 	if (!pec01(map))
-		i += ft_putstr("Error\nMap contains incorrect number of elements\n");
+	{
+		if (!i)
+			ft_putstr("Error\n");
+		i += ft_putstr("Map contains incorrect number of elements\n");
+	}
 	if (!ce_reachable(map))
-		i += ft_putstr("Error\nMap contains incorrect elements\n");
+	{
+		if (!i)
+			ft_putstr("Error\n");
+		i += ft_putstr("Map contains incorrect elements\n");
+	}
 	return (i);
 }

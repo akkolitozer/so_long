@@ -6,7 +6,7 @@
 /*   By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 15:17:32 by hulescur          #+#    #+#             */
-/*   Updated: 2026/01/20 17:16:12 by hulescur         ###   ########.fr       */
+/*   Updated: 2026/01/21 17:28:45 by hulescur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,17 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>
-# include "../mlx/mlx.h"
-# include "../gnl/get_next_line.h"
-# include "../libft/libft.h"
+# include "../minilx/mlx.h"
+# include "../includes/get_next_line.h"
+# include "../includes/libft.h"
+
+typedef struct window
+{
+	void	*minilx;
+	void	*minilx_win;
+	int 	win_width;;
+	int		win_height;
+}	t_window;
 
 char	**map_open(char *map_path);
 int		map_h(char **map);
@@ -33,7 +41,7 @@ int		check_exit(char **map);
 int		check_path(char **map);
 int		ce_reachable(char **map);
 int		map_not_valid(char **map);
-void	minilx_init(void);
+int		minilx_init(void);
 
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 15:21:56 by hulescur          #+#    #+#             */
-/*   Updated: 2026/01/20 16:48:53 by hulescur         ###   ########.fr       */
+/*   Updated: 2026/01/21 15:28:21 by hulescur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,10 @@ char	**map_open(char *map_path)
 	char	*line;
 
 	i = 0;
-	lines = count_lines(map_path);
 	fd = open(map_path, O_RDONLY);
 	if (fd < 0)
 		return (NULL);
+	lines = count_lines(map_path);
 	map = malloc(sizeof(char *) * (lines + 1));
 	if (!map)
 		return (NULL);

@@ -1,26 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/17 16:05:28 by hulescur          #+#    #+#             */
-/*   Updated: 2026/01/19 17:12:34 by hulescur         ###   ########.fr       */
+/*   Created: 2025/12/17 17:19:51 by hulescur          #+#    #+#             */
+/*   Updated: 2026/01/21 14:34:44 by hulescur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/libft.h"
 
-int	ft_putstr(char *str)
+char	*ft_strtrim(char *str, char c)
 {
-	int	i;
+	char	*sc;
+	int		i;
+	int		temp;
+	int		len;
 
 	i = 0;
-	while (str[i])
-	{
-		write(1, &str[i], 1);
+	len = 0;
+	while (str[i] && str[i] == c)
 		i++;
+	temp = i;
+	while (str[i] && str[i++] != c)
+		len++;
+	sc = malloc(sizeof(char) * (len + 1));
+	while (str[temp] && str[temp] != c)
+	{
+		sc[temp] = str[temp];
+		temp++;
 	}
-	return (i);
+	sc[temp] = 0;
+	return (sc);
 }
