@@ -6,7 +6,7 @@
 /*   By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 15:17:32 by hulescur          #+#    #+#             */
-/*   Updated: 2026/01/21 17:28:45 by hulescur         ###   ########.fr       */
+/*   Updated: 2026/01/22 18:01:40 by hulescur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int		check_exit(char **map);
 int		check_path(char **map);
 int		ce_reachable(char **map);
 int		map_not_valid(char **map);
-int		minilx_init(void);
+int		minilx_init(char **map);
 
 
 #endif

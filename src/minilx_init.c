@@ -6,7 +6,7 @@
 /*   By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 17:01:21 by hulescur          #+#    #+#             */
-/*   Updated: 2026/01/21 15:34:28 by hulescur         ###   ########.fr       */
+/*   Updated: 2026/01/22 18:06:43 by hulescur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,15 @@ int	close_win(void *minilx, void *minilx_win)
 	return (0);
 }
 
-int	minilx_init(void)
+int	minilx_init(char **map)
 {
-	void	*minilx;
-	void	*minilx_win;
+	struct window	win;
 
-	minilx = mlx_init();
-	minilx_win = mlx_new_window(minilx, 1400, 1000, "so_long");
-	mlx_hook(minilx_win, 17, 0, close_win, minilx);
-	mlx_loop(minilx);
+	win.win_width = map_w(map) * 48;
+	win.win_height = map_h(map) * 48;
+	win.minilx = mlx_init();
+	win.minilx_win = mlx_new_window(win.minilx, win.win_width, win.win_height, "so_long");
+	mlx_hook(win.minilx_win, 17, 0, close_win, win.minilx);
+	mlx_loop(win.minilx);
 	return (0);
 }

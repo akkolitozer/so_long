@@ -6,7 +6,7 @@
 /*   By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 16:26:41 by hulescur          #+#    #+#             */
-/*   Updated: 2026/01/21 15:34:08 by hulescur         ###   ########.fr       */
+/*   Updated: 2026/01/22 18:01:51 by hulescur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	main(int ac, char **av)
 			return (1);
 		}
 		if (!map_not_valid(map))
-			minilx_init();
+			minilx_init(map);
 	}
 	return (0);
 }
