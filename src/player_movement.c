@@ -6,7 +6,7 @@
 /*   By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 18:31:18 by hulescur          #+#    #+#             */
-/*   Updated: 2026/01/26 15:29:48 by hulescur         ###   ########.fr       */
+/*   Updated: 2026/01/26 16:16:28 by hulescur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	player_move_up(t_game *game)
 {
 	int	i;
 	int	j;
-	
+
 	i = -1;
 	game->p_dir = UP;
 	while (game->map[++i])
@@ -29,9 +29,11 @@ void	player_move_up(t_game *game)
 				(game->m)++;
 				ft_putnbr(game->m);
 				ft_putstr("\n");
+				if (is_valid_exit(game->map, i - 1, j))
+					exit(0);
 				game->map[i][j] = '0';
 				game->map[i - 1][j] = 'P';
-				return;
+				return ;
 			}
 		}
 	}
@@ -41,7 +43,7 @@ void	player_move_down(t_game *game)
 {
 	int	i;
 	int	j;
-	
+
 	i = -1;
 	game->p_dir = DOWN;
 	while (game->map[++i])
@@ -54,9 +56,11 @@ void	player_move_down(t_game *game)
 				(game->m)++;
 				ft_putnbr(game->m);
 				ft_putstr("\n");
+				if (is_valid_exit(game->map, i + 1, j))
+					exit(0);
 				game->map[i][j] = '0';
 				game->map[i + 1][j] = 'P';
-				return;
+				return ;
 			}
 		}
 	}
@@ -66,7 +70,7 @@ void	player_move_left(t_game *game)
 {
 	int	i;
 	int	j;
-	
+
 	i = -1;
 	game->p_dir = LEFT;
 	while (game->map[++i])
@@ -79,9 +83,11 @@ void	player_move_left(t_game *game)
 				(game->m)++;
 				ft_putnbr(game->m);
 				ft_putstr("\n");
+				if (is_valid_exit(game->map, i, j - 1))
+					exit(0);
 				game->map[i][j] = '0';
 				game->map[i][j - 1] = 'P';
-				return;
+				return ;
 			}
 		}
 	}
@@ -104,9 +110,11 @@ void	player_move_right(t_game *game)
 				(game->m)++;
 				ft_putnbr(game->m);
 				ft_putstr("\n");
+				if (is_valid_exit(game->map, i, j + 1))
+					exit(0);
 				game->map[i][j] = '0';
 				game->map[i][j + 1] = 'P';
-				return;
+				return ;
 			}
 		}
 	}

@@ -6,18 +6,11 @@
 /*   By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 18:46:10 by hulescur          #+#    #+#             */
-/*   Updated: 2026/01/26 13:58:36 by hulescur         ###   ########.fr       */
+/*   Updated: 2026/01/26 16:11:58 by hulescur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
-
-int	is_collectible(char c)
-{
-	if (c == 'C')
-		return (1);
-	return (0);
-}
 
 int	is_invalid_exit(char **map, int i, int j)
 {
@@ -26,7 +19,7 @@ int	is_invalid_exit(char **map, int i, int j)
 	return (0);
 }
 
-int is_valid_exit(char **map, int i, int j)
+int	is_valid_exit(char **map, int i, int j)
 {
 	if (map[i][j] == 'E' && check_all_c(map))
 		return (1);

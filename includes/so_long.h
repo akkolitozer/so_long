@@ -6,7 +6,7 @@
 /*   By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 15:17:32 by hulescur          #+#    #+#             */
-/*   Updated: 2026/01/26 13:52:22 by hulescur         ###   ########.fr       */
+/*   Updated: 2026/01/26 15:33:56 by hulescur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,5 +82,6 @@ void	render_exit(t_game *game);
 int		cant_move_to(char **map, int i, int j);
 void	player_movement(t_game *game, int keycode);
 void	defineplayerimg(t_game *game);
+int		is_valid_exit(char **map, int i, int j);
 
 #endif

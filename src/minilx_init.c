@@ -6,15 +6,15 @@
 /*   By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 17:01:21 by hulescur          #+#    #+#             */
-/*   Updated: 2026/01/26 15:28:40 by hulescur         ###   ########.fr       */
+/*   Updated: 2026/01/26 16:12:13 by hulescur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int	close_win(t_game *game)
+int	exitgame(void)
 {
-	mlx_destroy_window(game->minilx, game->minilx_win);
+	exit(0);
 	return (0);
 }
 
@@ -29,7 +29,7 @@ int	key_handler(int keycode, void *param)
 		render_map(game);
 	}
 	else if (keycode == 65307)
-		close_win(game);
+		exitgame();
 	return (0);
 }
 
@@ -47,11 +47,11 @@ int	minilx_init(t_game *game)
 	game->win_width = map_w(game->map) * 48;
 	game->win_height = map_h(game->map) * 48;
 	game->minilx = mlx_init();
-	game->minilx_win = mlx_new_window(game->minilx, game->win_width, 
-		game->win_height, "so_long");
+	game->minilx_win = mlx_new_window(game->minilx, game->win_width,
+			game->win_height, "so_long");
 	render_map(game);
 	mlx_key_hook(game->minilx_win, key_handler, game);
-	mlx_hook(game->minilx_win, 17, 0, close_win, game);
+	mlx_hook(game->minilx_win, 17, 0, exitgame, game);
 	mlx_loop(game->minilx);
 	return (0);
 }
