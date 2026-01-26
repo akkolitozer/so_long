@@ -6,14 +6,24 @@
 /*   By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 17:01:21 by hulescur          #+#    #+#             */
-/*   Updated: 2026/01/26 16:12:13 by hulescur         ###   ########.fr       */
+/*   Updated: 2026/01/26 18:12:23 by hulescur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int	exitgame(void)
+int	exit_error(t_game *game, char *msg)
 {
+	ft_putstr("Error\n");
+	ft_putstr(msg);
+	full_cleanup(game);
+	exit(1);
+	return (1);
+}
+
+int	exit_success(t_game *game)
+{
+	full_cleanup(game);
 	exit(0);
 	return (0);
 }
@@ -29,7 +39,7 @@ int	key_handler(int keycode, void *param)
 		render_map(game);
 	}
 	else if (keycode == 65307)
-		exitgame();
+		exit_success(game);
 	return (0);
 }
 
@@ -51,7 +61,7 @@ int	minilx_init(t_game *game)
 			game->win_height, "so_long");
 	render_map(game);
 	mlx_key_hook(game->minilx_win, key_handler, game);
-	mlx_hook(game->minilx_win, 17, 0, exitgame, game);
+	mlx_hook(game->minilx_win, 17, 0, exit_success, game);
 	mlx_loop(game->minilx);
 	return (0);
 }

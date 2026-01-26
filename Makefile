@@ -6,7 +6,7 @@
 #    By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/20 16:34:37 by hulescur          #+#    #+#              #
-#    Updated: 2026/01/26 11:13:12 by hulescur         ###   ########.fr        #
+#    Updated: 2026/01/26 17:44:19 by hulescur         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,8 @@ SRCS =	src/main.c src/map_parser.c src/map_parser2.c src/map_open.c \
 		src/get_next_line.c src/get_next_line_utils.c \
 		src/ft_putstr.c src/ft_strtrim.c src/ft_putnbr.c src/ft_putchar.c \
 		src/minilx_rendermap.c src/minilx_renderplayer.c \
-		src/player_movement.c src/interactions.c\
+		src/player_movement.c src/interactions.c \
+		src/cleanup.c \
 
 CC = cc 
 RM = rm -f
