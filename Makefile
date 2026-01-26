@@ -6,7 +6,7 @@
 #    By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/20 16:34:37 by hulescur          #+#    #+#              #
-#    Updated: 2026/01/21 15:30:49 by hulescur         ###   ########.fr        #
+#    Updated: 2026/01/25 18:31:48 by hulescur         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ SRCS =	src/main.c src/map_parser.c src/map_parser2.c src/map_open.c \
 		src/minilx_init.c \
 		src/get_next_line.c src/get_next_line_utils.c \
 		src/ft_putstr.c src/ft_strtrim.c \
+		src/minilx_rendermap.c \
 
 CC = cc 
 RM = rm -f

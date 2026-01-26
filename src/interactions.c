@@ -1,33 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   interactions.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/20 16:26:41 by hulescur          #+#    #+#             */
-/*   Updated: 2026/01/25 18:10:15 by hulescur         ###   ########.fr       */
+/*   Created: 2026/01/25 18:46:10 by hulescur          #+#    #+#             */
+/*   Updated: 2026/01/25 18:58:47 by hulescur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int	main(int ac, char **av)
+int	is_collectible(char c)
 {
-	char	**map;
-	char	**map_copy;
-
-	if (ac == 2)
-	{
-		map = map_open(av[1]);
-		map_copy = map_open(av[1]);
-		if (!map)
-		{
-			ft_putstr("Error\nCould not open map file.\n");
-			return (1);
-		}
-		if (!map_not_valid(map_copy))
-			minilx_init(map);
-	}
+	if (c == 'C')
+		return (1);
 	return (0);
+}
+
+int	is_invalid_exit(char **map, int i, int j)
+{
+	if (map[i][j] == 'E' && !check_path(map))
+		return (1);
+	return (0);
+}
+
+int	is_wall(char c)
+{
+	if (c == '1')
+		return (1);
+	return (0);
+}
+
+int	can_move_to(char **map, int i, int j)
+{
+	if (is_wall(map[i][j]) || is_invalid_exit(map, i, j))
+		return (0);
+	return (1);
 }
