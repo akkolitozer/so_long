@@ -1,25 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/17 16:06:33 by hulescur          #+#    #+#             */
-/*   Updated: 2026/01/26 11:11:53 by hulescur         ###   ########.fr       */
+/*   Created: 2026/01/26 11:11:09 by hulescur          #+#    #+#             */
+/*   Updated: 2026/01/26 11:11:30 by hulescur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "../includes/libft.h"
 
-# include <unistd.h>
-# include <stdlib.h>
-# include "../includes/get_next_line.h"
-
-int		ft_putstr(char *str);
-char	*ft_strtrim(char *str, char c);
-void	ft_putnbr(int n);
-void	ft_putchar(char c);
-
-#endif 
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
+}

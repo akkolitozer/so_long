@@ -6,7 +6,7 @@
 /*   By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 18:46:10 by hulescur          #+#    #+#             */
-/*   Updated: 2026/01/25 18:58:47 by hulescur         ###   ########.fr       */
+/*   Updated: 2026/01/26 13:58:36 by hulescur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,14 @@ int	is_collectible(char c)
 
 int	is_invalid_exit(char **map, int i, int j)
 {
-	if (map[i][j] == 'E' && !check_path(map))
+	if (map[i][j] == 'E' && !check_all_c(map))
+		return (1);
+	return (0);
+}
+
+int is_valid_exit(char **map, int i, int j)
+{
+	if (map[i][j] == 'E' && check_all_c(map))
 		return (1);
 	return (0);
 }
@@ -33,9 +40,9 @@ int	is_wall(char c)
 	return (0);
 }
 
-int	can_move_to(char **map, int i, int j)
+int	cant_move_to(char **map, int i, int j)
 {
 	if (is_wall(map[i][j]) || is_invalid_exit(map, i, j))
-		return (0);
-	return (1);
+		return (1);
+	return (0);
 }

@@ -6,146 +6,131 @@
 /*   By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 17:49:55 by hulescur          #+#    #+#             */
-/*   Updated: 2026/01/25 19:41:08 by hulescur         ###   ########.fr       */
+/*   Updated: 2026/01/26 13:50:40 by hulescur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	render_walls(t_game *game, char **map)
+void	render_walls(t_game *game)
 {
 	int	i;
 	int	j;
-	int	tile_size;
-	void	*wall_img;
+	int	tile_size;;
 
 	tile_size = 48;
-	wall_img = mlx_xpm_file_to_image(game->minilx, "./textures/wall.xpm", 
+	game->wall_img = mlx_xpm_file_to_image(game->minilx, "./textures/wall.xpm", 
 		&tile_size, &tile_size);
-	if (!wall_img)
+	if (!game->wall_img)
 	{
 		ft_putstr("Error loading wall texture\n");
 		return ;
 	}
 	i = -1;
-	while (map[++i])
+	while (game->map[++i])
 	{
 		j = -1;
-		while (map[i][++j])
-		{
-			if (map[i][j] == '1')
+		while (game->map[i][++j])
+			if (game->map[i][j] == '1')
 				mlx_put_image_to_window(game->minilx, game->minilx_win, 
-					wall_img, j * tile_size, i * tile_size);
-		}
+					game->wall_img, j * tile_size, i * tile_size);
 	}
 }
 
-void	render_ground(t_game *game, char **map)
+void	render_ground(t_game *game)
 {
 	int	i;
 	int	j;
 	int	tile_size;
-	void	*ground_img;
 	
 	tile_size = 48;
-	ground_img = mlx_xpm_file_to_image(game->minilx, "./textures/ground.xpm", 
-		&tile_size, &tile_size);
-	if (!ground_img)
+	game->p_right_img = mlx_xpm_file_to_image(game->minilx,
+		 "./textures/ground.xpm", &tile_size, &tile_size);
+	if (!game->p_right_img)
 	{
 		ft_putstr("Error loading ground texture\n");
 		return ;
 	}
 	i = -1;
-	while (map[++i])
+	while (game->map[++i])
 	{
 		j = -1;
-		while (map[i][++j])
+		while (game->map[i][++j])
 		{
-			if (map[i][j] == '0')
+			if (game->map[i][j] == '0')
 				mlx_put_image_to_window(game->minilx, game->minilx_win, 
-					ground_img, j * tile_size, i * tile_size);
+					game->p_right_img, j * tile_size, i * tile_size);
 		}
 	}
 }
-void	render_player(t_game *game, char **map)
+void	render_player(t_game *game)
 {
 	int	i;
 	int	j;
 	int	tile_size;
-	void	*player_img;
 
+	defineplayerimg(game);
 	tile_size = 48;
-	player_img = mlx_xpm_file_to_image(game->minilx, "./textures/playerRight.xpm", 
-		&tile_size, &tile_size);
-	if (!player_img)
-	{
-		ft_putstr("Error loading player texture\n");
-		return ;
-	}
 	i = -1;
-	while (map[++i])
+	while (game->map[++i])
 	{
 		j = -1;
-		while (map[i][++j])
-		{
-			if (map[i][j] == 'P')
+		while (game->map[i][++j])
+			if (game->map[i][j] == 'P')
 				mlx_put_image_to_window(game->minilx, game->minilx_win, 
-					player_img, j * tile_size, i * tile_size);
-		}
+					game->p_img, j * tile_size, i * tile_size);
 	}
 }
 
-void	render_collectibles(t_game *game, char **map)
+void	render_collectibles(t_game *game)
 {
 	int	i;
 	int	j;
 	int	tile_size;
-	void	*collectible_img;
 
 	tile_size = 48;
-	collectible_img = mlx_xpm_file_to_image(game->minilx, 
+	game->collectible_img = mlx_xpm_file_to_image(game->minilx, 
 		"./textures/collectible.xpm", &tile_size, &tile_size);
-	if (!collectible_img)
+	if (!game->collectible_img)
 	{
 		ft_putstr("Error loading collectible texture\n");
 		return ;
 	}
 	i = -1;
-	while (map[++i])
+	while (game->map[++i])
 	{
 		j = -1;
-		while (map[i][++j])
+		while (game->map[i][++j])
 		{
-			if (map[i][j] == 'C')
+			if (game->map[i][j] == 'C')
 				mlx_put_image_to_window(game->minilx, game->minilx_win, 
-					collectible_img, j * tile_size, i * tile_size);
+					game->collectible_img, j * tile_size, i * tile_size);
 		}
 	}
 }
-void	render_exit(t_game *game, char **map)
+void	render_exit(t_game *game)
 {
 	int	i;
 	int	j;
 	int	tile_size;
-	void	*exit_img;
 
 	tile_size = 48;
-	exit_img = mlx_xpm_file_to_image(game->minilx, "./textures/exit.xpm", 
+	game->exit_img = mlx_xpm_file_to_image(game->minilx, "./textures/exit.xpm", 
 		&tile_size, &tile_size);
-	if (!exit_img)
+	if (!game->exit_img)
 	{
 		ft_putstr("Error loading exit texture\n");
 		return ;
 	}
 	i = -1;
-	while (map[++i])
+	while (game->map[++i])
 	{
 		j = -1;
-		while (map[i][++j])
+		while (game->map[i][++j])
 		{
-			if (map[i][j] == 'E')
+			if (game->map[i][j] == 'E')
 				mlx_put_image_to_window(game->minilx, game->minilx_win, 
-					exit_img, j * tile_size, i * tile_size);
+					game->exit_img, j * tile_size, i * tile_size);
 		}
 	}
 }

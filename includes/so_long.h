@@ -6,12 +6,14 @@
 /*   By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 15:17:32 by hulescur          #+#    #+#             */
-/*   Updated: 2026/01/25 19:49:07 by hulescur         ###   ########.fr       */
+/*   Updated: 2026/01/26 13:52:22 by hulescur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
+
+#include <stdio.h>
 
 # include <stdlib.h>
 # include <unistd.h>
@@ -43,11 +45,12 @@ typedef struct s_game
 	char	**map;
 	int		px;
 	int		py;
-	int		moves;
+	int		m;
 	
 	t_dir	p_dir;
 	void	*wall_img;
 	void	*ground_img;
+	void	*p_img;
 	void	*p_up_img;
 	void	*p_down_img;
 	void	*p_left_img;
@@ -65,16 +68,19 @@ int		closed_map(char **map);
 int		pec01(char **map);
 int		rep_path(char *u, char *d, char *l, char *r);
 int		check_exit(char **map);
-int		check_path(char **map);
+int		check_all_c(char **map);
 int		ce_reachable(char **map);
 int		map_not_valid(char **map);
-int		minilx_init(char **map);
-int		close_win(void *minilx, void *minilx_win);
-void	render_map(t_game *game, char **map);
-void	render_walls(t_game *game, char **map);
-void	render_ground(t_game *game, char **map);
-void	render_player(t_game *game, char **map);
-void	render_collectibles(t_game *game, char **map);
-void	render_exit(t_game *game, char **map);
+int		minilx_init(t_game *game);
+int		close_win(t_game *game);
+void	render_map(t_game *game);
+void	render_walls(t_game *game);
+void	render_ground(t_game *game);
+void	render_player(t_game *game);
+void	render_collectibles(t_game *game);
+void	render_exit(t_game *game);
+int		cant_move_to(char **map, int i, int j);
+void	player_movement(t_game *game, int keycode);
+void	defineplayerimg(t_game *game);
 
 #endif

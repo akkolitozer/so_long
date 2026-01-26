@@ -6,7 +6,7 @@
 /*   By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 18:36:42 by hulescur          #+#    #+#             */
-/*   Updated: 2026/01/21 15:28:54 by hulescur         ###   ########.fr       */
+/*   Updated: 2026/01/26 11:32:00 by hulescur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	check_exit(char **map)
 	return (1);
 }
 
-int	check_path(char **map)
+int	check_all_c(char **map)
 {
 	int	i;
 	int	j;
@@ -72,7 +72,7 @@ int	ce_reachable(char **map)
 							&map[i][j - 1], &map[i][j + 1]);
 		}
 	}
-	return (check_path(map) && check_exit(map));
+	return (check_all_c(map) && check_exit(map));
 }
 
 int	map_not_valid(char **map)

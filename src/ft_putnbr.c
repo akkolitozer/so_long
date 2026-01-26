@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/17 16:06:33 by hulescur          #+#    #+#             */
-/*   Updated: 2026/01/26 11:11:53 by hulescur         ###   ########.fr       */
+/*   Created: 2026/01/26 11:05:32 by hulescur          #+#    #+#             */
+/*   Updated: 2026/01/26 11:11:40 by hulescur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "../includes/libft.h"
 
-# include <unistd.h>
-# include <stdlib.h>
-# include "../includes/get_next_line.h"
-
-int		ft_putstr(char *str);
-char	*ft_strtrim(char *str, char c);
-void	ft_putnbr(int n);
-void	ft_putchar(char c);
-
-#endif 
+void	ft_putnbr(int n)
+{
+	if (n == -2147483648)
+	{
+		ft_putstr("-2147483648");
+		return ;
+	}
+	if (n < 0)
+	{
+		ft_putstr("-");
+		n = -n;
+	}
+	if (n >= 10)
+		ft_putnbr(n / 10);
+	ft_putchar((n % 10) + '0');
+}
