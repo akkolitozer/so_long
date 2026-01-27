@@ -6,7 +6,7 @@
 /*   By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 17:49:55 by hulescur          #+#    #+#             */
-/*   Updated: 2026/01/26 16:14:43 by hulescur         ###   ########.fr       */
+/*   Updated: 2026/01/27 16:07:35 by hulescur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,14 @@ void	render_walls(t_game *game)
 	int	tile_size;
 
 	tile_size = 48;
+	if (game->wall_img)
+		free(game->wall_img);
 	game->wall_img = mlx_xpm_file_to_image(game->minilx, "./textures/wall.xpm",
 			&tile_size, &tile_size);
 	if (!game->wall_img)
 	{
 		ft_putstr("Error loading wall texture\n");
+		exit_success(game);
 		return ;
 	}
 	i = -1;
@@ -44,11 +47,12 @@ void	render_ground(t_game *game)
 	int	tile_size;
 
 	tile_size = 48;
-	game->p_right_img = mlx_xpm_file_to_image(game->minilx,
+	game->ground_img = mlx_xpm_file_to_image(game->minilx,
 			"./textures/ground.xpm", &tile_size, &tile_size);
-	if (!game->p_right_img)
+	if (!game->ground_img)
 	{
-		ft_putstr("Error loadingSSSSSS ground texture\n");
+		ft_putstr("Error loading ground texture\n");
+		exit_success(game);
 		return ;
 	}
 	i = -1;
@@ -59,7 +63,7 @@ void	render_ground(t_game *game)
 		{
 			if (game->map[i][j] == '0')
 				mlx_put_image_to_window(game->minilx, game->minilx_win,
-					game->p_right_img, j * tile_size, i * tile_size);
+					game->ground_img, j * tile_size, i * tile_size);
 		}
 	}
 }
@@ -95,6 +99,7 @@ void	render_collectibles(t_game *game)
 	if (!game->collectible_img)
 	{
 		ft_putstr("Error loading collectible texture\n");
+		exit_success(game);
 		return ;
 	}
 	i = -1;
@@ -122,6 +127,7 @@ void	render_exit(t_game *game)
 	if (!game->exit_img)
 	{
 		ft_putstr("Error loading exit texture\n");
+		exit_success(game);
 		return ;
 	}
 	i = -1;

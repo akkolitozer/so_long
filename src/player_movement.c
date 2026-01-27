@@ -6,7 +6,7 @@
 /*   By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 18:31:18 by hulescur          #+#    #+#             */
-/*   Updated: 2026/01/26 17:25:14 by hulescur         ###   ########.fr       */
+/*   Updated: 2026/01/26 19:55:28 by hulescur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ void	player_move_right(t_game *game)
 				ft_putnbr(game->m);
 				ft_putstr("\n");
 				if (is_valid_exit(game->map, i, j + 1))
-					exit(0);
+					exit_success(game);
 				game->map[i][j] = '0';
 				game->map[i][j + 1] = 'P';
 				return ;

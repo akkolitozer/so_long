@@ -5,108 +5,68 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/26 17:38:09 by hulescur          #+#    #+#             */
-/*   Updated: 2026/01/26 18:08:47 by hulescur         ###   ########.fr       */
+/*   Created: 2026/01/26 19:13:05 by hulescur          #+#    #+#             */
+/*   Updated: 2026/01/27 16:18:20 by hulescur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	cleanup(t_game *game)
-{
-	if (game->wall_img)
-	{
-		mlx_destroy_image(game->minilx, game->wall_img);
-		game->wall_img = NULL;
-	}
-	if (game->ground_img)
-	{
-		mlx_destroy_image(game->minilx, game->ground_img);
-		game->ground_img = NULL;
-	}
-	if (game->p_img)
-	{
-		mlx_destroy_image(game->minilx, game->p_img);
-		game->p_img = NULL;
-	}
-	if (game->p_up_img)
-	{
-		mlx_destroy_image(game->minilx, game->p_up_img);
-		game->p_up_img = NULL;
-	}
-	if (game->p_down_img)
-	{
-		mlx_destroy_image(game->minilx, game->p_down_img);
-		game->p_down_img = NULL;
-	}
-}
-
-void	cleanup2(t_game *game)
-{
-	if (game->p_left_img)
-	{
-		mlx_destroy_image(game->minilx, game->p_left_img);
-		game->p_left_img = NULL;
-	}
-	if (game->p_right_img)
-	{
-		mlx_destroy_image(game->minilx, game->p_right_img);
-		game->p_right_img = NULL;
-	}
-	if (game->collectible_img)
-	{
-		mlx_destroy_image(game->minilx, game->collectible_img);
-		game->collectible_img = NULL;
-	}
-	if (game->exit_img)
-	{
-		mlx_destroy_image(game->minilx, game->exit_img);
-		game->exit_img = NULL;
-	}
-	if (game->minilx_win)
-	{
-		mlx_destroy_window(game->minilx, game->minilx_win);
-		game->minilx_win = NULL;
-	}
-}
-
-void	cleanup3(t_game *game)
+void	free_tab(char **tab)
 {
 	int	i;
 
 	i = 0;
-	
-	if (game->map)
+	while (tab[i])
 	{
-		while (game->map[i])
-			free(game->map[i++]);
-		free(game->map);
+		free(tab[i]);
+		i++;
 	}
-	if (game->minilx)
-	{
-		mlx_destroy_display(game->minilx);
-		free(game->minilx);
-		game->minilx = NULL;
-	}
+	free(tab);
 }
 
-void	free_map(char **map)
+int	load_invalid(t_game *game, char *path)
 {
-	int	i;
+	char	**map;
 
-	i = 0;
-	if (map)
+	map = map_open(path);
+	if (!map)
+		return(ft_putstr("Error\nInvalid path\n"));
+	if (map_not_valid(map))
 	{
-		while (map[i])
-			free(map[i++]);
-		free(map);
+		free_tab(map);
+		return (ft_putstr("Error\nInvalid maps\n"));
 	}
+	free_tab(map);
+	game->map = map_open(path);
+	return (0);
 }
 
 void	full_cleanup(t_game *game)
 {
-	cleanup(game);
-	cleanup2(game);
-	cleanup3(game);
+	if (game->wall_img)
+		mlx_destroy_image(game->minilx, game->wall_img);
+	if (game->ground_img)
+		mlx_destroy_image(game->minilx, game->ground_img);
+	if (game->p_up_img)
+		mlx_destroy_image(game->minilx, game->p_up_img);
+	if (game->p_down_img)
+		mlx_destroy_image(game->minilx, game->p_down_img);
+	if (game->p_left_img)
+		mlx_destroy_image(game->minilx, game->p_left_img);
+	if (game->p_right_img)
+		mlx_destroy_image(game->minilx, game->p_right_img);
+	if (game->collectible_img)
+		mlx_destroy_image(game->minilx, game->collectible_img);
+	if (game->exit_img)
+		mlx_destroy_image(game->minilx, game->exit_img);
+	if (game->minilx_win)
+		mlx_destroy_window(game->minilx, game->minilx_win);
+	if (game->minilx)
+	{
+		mlx_destroy_display(game->minilx);
+		free(game->minilx);
+	}
+	free_tab(game->map);
 	free(game);
 }

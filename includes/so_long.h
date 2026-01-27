@@ -6,7 +6,7 @@
 /*   By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 15:17:32 by hulescur          #+#    #+#             */
-/*   Updated: 2026/01/26 18:02:31 by hulescur         ###   ########.fr       */
+/*   Updated: 2026/01/27 15:55:43 by hulescur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,8 @@ void	player_movement(t_game *game, int keycode);
 void	defineplayerimg(t_game *game);
 int		is_valid_exit(char **map, int i, int j);
 int		exit_success(t_game *game);
-int		exit_error(t_game *game, char *message);
 void	full_cleanup(t_game *game);
-void	free_map(char **map);
+void	free_tab(char **map);
+int		load_invalid(t_game *game, char *path);
+
 #endif
