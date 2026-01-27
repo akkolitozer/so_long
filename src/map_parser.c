@@ -6,7 +6,7 @@
 /*   By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 15:34:53 by hulescur          #+#    #+#             */
-/*   Updated: 2026/01/20 16:47:14 by hulescur         ###   ########.fr       */
+/*   Updated: 2026/01/27 17:34:54 by hulescur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int	pec01(char **map)
 				var[1]++;
 			else if (map[var[3]][var[4]] == 'C')
 				var[2]++;
-			else if (map[var[3]][var[4]] != '1' && map[var[3]][var[4]] != '0')
+			else if (map[var[3]][var[4]] != '1' && map[var[3]][var[4]] != '0' && map[var[3]][var[4]] != 'H')
 				return (0);
 		}
 	}

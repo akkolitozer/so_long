@@ -6,7 +6,7 @@
 /*   By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 15:17:32 by hulescur          #+#    #+#             */
-/*   Updated: 2026/01/27 15:55:43 by hulescur         ###   ########.fr       */
+/*   Updated: 2026/01/27 17:38:51 by hulescur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,18 +38,20 @@ typedef enum e_dir
 
 typedef struct s_game
 {
+	char	**map;
 	void	*minilx;
 	void	*minilx_win;
 	int 	win_width;;
 	int		win_height;
-	char	**map;
 	int		px;
 	int		py;
 	int		ex;
 	int		ey;
 	int		m;
-	
+	int 	frame;
 	t_dir	p_dir;
+	t_dir	e_dir;
+	
 	void	*wall_img;
 	void	*ground_img;
 	void	*p_img;
@@ -59,6 +61,7 @@ typedef struct s_game
 	void	*p_right_img;
 	void	*collectible_img;
 	void	*exit_img;
+	void	*p_enemy_img;
 }	t_game;
 
 char	**map_open(char *map_path);
@@ -89,5 +92,8 @@ int		exit_success(t_game *game);
 void	full_cleanup(t_game *game);
 void	free_tab(char **map);
 int		load_invalid(t_game *game, char *path);
+void	enemy(t_game *game);
+void	enemy_move_handler(t_game *game);
+void	render_enemy(t_game *game);
 
 #endif

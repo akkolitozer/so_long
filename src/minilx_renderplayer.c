@@ -6,7 +6,7 @@
 /*   By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 10:49:20 by hulescur          #+#    #+#             */
-/*   Updated: 2026/01/27 15:59:17 by hulescur         ###   ########.fr       */
+/*   Updated: 2026/01/27 16:47:24 by hulescur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@ void	defineplayerimg(t_game *game)
 	defineplayerupimg(game);
 	defineplayerleftimg(game);
 	defineplayerrightimg(game);
-	game->p_img = game->p_down_img;
 	if (game->p_dir == UP)
 		game->p_img = game->p_up_img;
 	else if (game->p_dir == DOWN)

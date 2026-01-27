@@ -6,7 +6,7 @@
 /*   By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 17:01:21 by hulescur          #+#    #+#             */
-/*   Updated: 2026/01/27 16:19:18 by hulescur         ###   ########.fr       */
+/*   Updated: 2026/01/27 17:38:15 by hulescur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,11 @@ int	key_handler(int keycode, void *param)
 	t_game	*game;
 
 	game = (t_game *)param;
+	if (game->frame % 2 == 0)
+		enemy(game);
 	if (keycode == 119 || keycode == 97 || keycode == 115 || keycode == 100)
 	{
+		game->frame++;
 		player_movement(game, keycode);
 		render_map(game);
 	}
@@ -41,6 +44,7 @@ void	render_map(t_game *game)
 	render_player(game);
 	render_collectibles(game);
 	render_exit(game);
+	render_enemy(game);
 }
 
 int	minilx_init(t_game *game)

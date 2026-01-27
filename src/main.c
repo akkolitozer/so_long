@@ -6,7 +6,7 @@
 /*   By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 16:26:41 by hulescur          #+#    #+#             */
-/*   Updated: 2026/01/27 15:57:23 by hulescur         ###   ########.fr       */
+/*   Updated: 2026/01/27 16:47:16 by hulescur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,10 @@ int	main(int ac, char **av)
 		return (1);
 	}
 	if (!load_invalid(game, av[1]))
+	{
+		game->p_dir = DOWN;
 		minilx_init(game);
+	}
 	else
 		free(game);
 	return (0);
