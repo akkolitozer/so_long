@@ -6,7 +6,7 @@
 /*   By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 15:17:32 by hulescur          #+#    #+#             */
-/*   Updated: 2026/01/27 17:38:51 by hulescur         ###   ########.fr       */
+/*   Updated: 2026/01/28 15:03:54 by hulescur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,15 +85,17 @@ void	render_player(t_game *game);
 void	render_collectibles(t_game *game);
 void	render_exit(t_game *game);
 int		cant_move_to(char **map, int i, int j);
+int		enemy_cant_move_to(char **map, int i, int j);
 void	player_movement(t_game *game, int keycode);
 void	defineplayerimg(t_game *game);
 int		is_valid_exit(char **map, int i, int j);
-int		exit_success(t_game *game);
+int		exit_success(void *param);
 void	full_cleanup(t_game *game);
 void	free_tab(char **map);
 int		load_invalid(t_game *game, char *path);
 void	enemy(t_game *game);
 void	enemy_move_handler(t_game *game);
 void	render_enemy(t_game *game);
+void	dead_handler(t_game *game);
 
 #endif

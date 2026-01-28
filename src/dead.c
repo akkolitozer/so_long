@@ -1,37 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   dead.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/17 17:19:51 by hulescur          #+#    #+#             */
-/*   Updated: 2026/01/28 15:11:47 by hulescur         ###   ########.fr       */
+/*   Created: 2026/01/28 14:58:28 by hulescur          #+#    #+#             */
+/*   Updated: 2026/01/28 15:00:26 by hulescur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "../includes/so_long.h"
 
-char	*ft_strtrim(char *str, char c)
+void	dead_handler(t_game *game)
 {
-	char	*sc;
-	int		i;
-	int		temp;
-	int		len;
-
-	i = 0;
-	len = 0;
-	while (str[i] && str[i] == c)
-		i++;
-	temp = i;
-	while (str[i] && str[i++] != c)
-		len++;
-	sc = malloc(sizeof(char) * (len + 1));
-	while (str[temp] && str[temp] != c)
-	{
-		sc[temp] = str[temp];
-		temp++;
-	}
-	sc[temp] = 0;
-	return (sc);
+	ft_putstr("Enemy caught you! Game Over!\n");
+	exit_success(game);
 }

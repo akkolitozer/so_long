@@ -6,7 +6,7 @@
 /*   By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 10:49:20 by hulescur          #+#    #+#             */
-/*   Updated: 2026/01/27 16:47:24 by hulescur         ###   ########.fr       */
+/*   Updated: 2026/01/28 15:15:29 by hulescur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,9 @@ void	defineplayerupimg(t_game *game)
 	int	tile_size;
 
 	tile_size = 48;
-	game->p_up_img = mlx_xpm_file_to_image(game->minilx,
-			"./textures/playerUp.xpm", &tile_size, &tile_size);
+	if (!game->p_up_img)
+		game->p_up_img = mlx_xpm_file_to_image(game->minilx,
+				"./textures/playerUp.xpm", &tile_size, &tile_size);
 	if (!game->p_up_img)
 	{
 		ft_putstr("Error loading player up texture\n");
@@ -32,8 +33,9 @@ void	defineplayerdownimg(t_game *game)
 	int	tile_size;
 
 	tile_size = 48;
-	game->p_down_img = mlx_xpm_file_to_image(game->minilx,
-			"./textures/playerDown.xpm", &tile_size, &tile_size);
+	if (!game->p_down_img)
+		game->p_down_img = mlx_xpm_file_to_image(game->minilx,
+				"./textures/playerDown.xpm", &tile_size, &tile_size);
 	if (!game->p_down_img)
 	{
 		ft_putstr("Error loading player down texture\n");
@@ -47,8 +49,9 @@ void	defineplayerleftimg(t_game *game)
 	int	tile_size;
 
 	tile_size = 48;
-	game->p_left_img = mlx_xpm_file_to_image(game->minilx,
-			"./textures/playerLeft.xpm", &tile_size, &tile_size);
+	if (!game->p_left_img)
+		game->p_left_img = mlx_xpm_file_to_image(game->minilx,
+				"./textures/playerLeft.xpm", &tile_size, &tile_size);
 	if (!game->p_left_img)
 	{
 		ft_putstr("Error loading player left texture\n");
@@ -62,8 +65,9 @@ void	defineplayerrightimg(t_game *game)
 	int	tile_size;
 
 	tile_size = 48;
-	game->p_right_img = mlx_xpm_file_to_image(game->minilx,
-			"./textures/playerRight.xpm", &tile_size, &tile_size);
+	if (!game->p_right_img)
+		game->p_right_img = mlx_xpm_file_to_image(game->minilx,
+				"./textures/playerRight.xpm", &tile_size, &tile_size);
 	if (!game->p_right_img)
 	{
 		ft_putstr("Error loading player right texture\n");

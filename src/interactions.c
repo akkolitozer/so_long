@@ -6,7 +6,7 @@
 /*   By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 18:46:10 by hulescur          #+#    #+#             */
-/*   Updated: 2026/01/27 15:43:46 by hulescur         ###   ########.fr       */
+/*   Updated: 2026/01/28 15:15:14 by hulescur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,14 @@ int	is_wall(char c)
 int	cant_move_to(char **map, int i, int j)
 {
 	if (is_wall(map[i][j]) || is_invalid_exit(map, i, j))
+		return (1);
+	return (0);
+}
+
+int	enemy_cant_move_to(char **map, int i, int j)
+{
+	if (is_wall(map[i][j]) || is_invalid_exit(map, i, j) ||
+		is_valid_exit(map, i, j))
 		return (1);
 	return (0);
 }

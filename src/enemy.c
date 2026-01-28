@@ -6,7 +6,7 @@
 /*   By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 17:06:00 by hulescur          #+#    #+#             */
-/*   Updated: 2026/01/27 17:37:02 by hulescur         ###   ########.fr       */
+/*   Updated: 2026/01/28 15:16:03 by hulescur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,9 @@ void	render_enemy(t_game *game)
 	int	tile_size;
 
 	tile_size = 48;
-	game->p_enemy_img = mlx_xpm_file_to_image(game->minilx,
-			"./textures/hostile.xpm", &tile_size, &tile_size);
+	if (!game->p_enemy_img)
+		game->p_enemy_img = mlx_xpm_file_to_image(game->minilx,
+				"./textures/hostile.xpm", &tile_size, &tile_size);
 	if (!game->p_enemy_img)
 	{
 		ft_putstr("Error loading enemy texture\n");

@@ -6,7 +6,7 @@
 /*   By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 19:13:05 by hulescur          #+#    #+#             */
-/*   Updated: 2026/01/27 16:18:20 by hulescur         ###   ########.fr       */
+/*   Updated: 2026/01/28 15:15:48 by hulescur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	load_invalid(t_game *game, char *path)
 
 	map = map_open(path);
 	if (!map)
-		return(ft_putstr("Error\nInvalid path\n"));
+		return (ft_putstr("Error\nInvalid path\n"));
 	if (map_not_valid(map))
 	{
 		free_tab(map);
@@ -40,6 +40,16 @@ int	load_invalid(t_game *game, char *path)
 	free_tab(map);
 	game->map = map_open(path);
 	return (0);
+}
+
+void	free_struct(t_game *game)
+{
+	if (game->minilx)
+	{
+		mlx_destroy_display(game->minilx);
+		free(game->minilx);
+	}
+	free(game);
 }
 
 void	full_cleanup(t_game *game)
@@ -62,11 +72,8 @@ void	full_cleanup(t_game *game)
 		mlx_destroy_image(game->minilx, game->exit_img);
 	if (game->minilx_win)
 		mlx_destroy_window(game->minilx, game->minilx_win);
-	if (game->minilx)
-	{
-		mlx_destroy_display(game->minilx);
-		free(game->minilx);
-	}
+	if (game->p_enemy_img)
+		mlx_destroy_image(game->minilx, game->p_enemy_img);
 	free_tab(game->map);
-	free(game);
+	free_struct(game);
 }

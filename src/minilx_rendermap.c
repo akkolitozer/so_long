@@ -6,7 +6,7 @@
 /*   By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 17:49:55 by hulescur          #+#    #+#             */
-/*   Updated: 2026/01/27 16:07:35 by hulescur         ###   ########.fr       */
+/*   Updated: 2026/01/28 15:15:03 by hulescur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,9 @@ void	render_walls(t_game *game)
 	int	tile_size;
 
 	tile_size = 48;
-	if (game->wall_img)
-		free(game->wall_img);
-	game->wall_img = mlx_xpm_file_to_image(game->minilx, "./textures/wall.xpm",
-			&tile_size, &tile_size);
+	if (!game->wall_img)
+		game->wall_img = mlx_xpm_file_to_image(game->minilx,
+				"./textures/wall.xpm", &tile_size, &tile_size);
 	if (!game->wall_img)
 	{
 		ft_putstr("Error loading wall texture\n");
@@ -47,8 +46,9 @@ void	render_ground(t_game *game)
 	int	tile_size;
 
 	tile_size = 48;
-	game->ground_img = mlx_xpm_file_to_image(game->minilx,
-			"./textures/ground.xpm", &tile_size, &tile_size);
+	if (!game->ground_img)
+		game->ground_img = mlx_xpm_file_to_image(game->minilx,
+				"./textures/ground.xpm", &tile_size, &tile_size);
 	if (!game->ground_img)
 	{
 		ft_putstr("Error loading ground texture\n");
@@ -94,8 +94,9 @@ void	render_collectibles(t_game *game)
 	int	tile_size;
 
 	tile_size = 48;
-	game->collectible_img = mlx_xpm_file_to_image(game->minilx,
-			"./textures/collectible.xpm", &tile_size, &tile_size);
+	if (!game->collectible_img)
+		game->collectible_img = mlx_xpm_file_to_image(game->minilx,
+				"./textures/collectible.xpm", &tile_size, &tile_size);
 	if (!game->collectible_img)
 	{
 		ft_putstr("Error loading collectible texture\n");
@@ -122,8 +123,9 @@ void	render_exit(t_game *game)
 	int	tile_size;
 
 	tile_size = 48;
-	game->exit_img = mlx_xpm_file_to_image(game->minilx, "./textures/exit.xpm",
-			&tile_size, &tile_size);
+	if (!game->exit_img)
+		game->exit_img = mlx_xpm_file_to_image(game->minilx,
+				"./textures/exit.xpm", &tile_size, &tile_size);
 	if (!game->exit_img)
 	{
 		ft_putstr("Error loading exit texture\n");

@@ -6,14 +6,17 @@
 /*   By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 17:01:21 by hulescur          #+#    #+#             */
-/*   Updated: 2026/01/27 17:38:15 by hulescur         ###   ########.fr       */
+/*   Updated: 2026/01/28 13:35:04 by hulescur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int	exit_success(t_game *game)
+int	exit_success(void *param)
 {
+	t_game	*game;
+
+	game = (t_game *)param;
 	full_cleanup(game);
 	exit(0);
 	return (0);
@@ -24,12 +27,12 @@ int	key_handler(int keycode, void *param)
 	t_game	*game;
 
 	game = (t_game *)param;
-	if (game->frame % 2 == 0)
-		enemy(game);
 	if (keycode == 119 || keycode == 97 || keycode == 115 || keycode == 100)
 	{
 		game->frame++;
 		player_movement(game, keycode);
+		if (game->frame % 2 == 0)
+			enemy(game);
 		render_map(game);
 	}
 	else if (keycode == 65307)
