@@ -18,9 +18,11 @@ char	*ft_strtrim(char *str, char c)
 	int		i;
 	int		temp;
 	int		len;
+	int		start;
 
 	i = 0;
 	len = 0;
+	start = 0;
 	while (str[i] && str[i] == c)
 		i++;
 	temp = i;
@@ -29,9 +31,9 @@ char	*ft_strtrim(char *str, char c)
 	sc = malloc(sizeof(char) * (len + 1));
 	while (str[temp] && str[temp] != c)
 	{
-		sc[temp] = str[temp];
+		sc[start++] = str[temp];
 		temp++;
 	}
-	sc[temp] = 0;
+	sc[start] = 0;
 	return (sc);
 }

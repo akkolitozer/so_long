@@ -17,10 +17,10 @@ int	check_exit(char **map)
 	int	i;
 	int	j;
 
-	i = 0;
+	i = -1;
 	while (map[++i + 1])
 	{
-		j = 0;
+		j = -1;
 		while (map[i][++j + 1])
 		{
 			if (map[i][j] == 'E')
@@ -37,10 +37,10 @@ int	check_all_c(char **map)
 	int	i;
 	int	j;
 
-	i = 0;
+	i = -1;
 	while (map[++i + 1])
 	{
-		j = 0;
+		j = -1;
 		while (map[i][++j + 1])
 		{
 			if (map[i][j] == 'C')
@@ -60,10 +60,10 @@ int	ce_reachable(char **map)
 	while (change)
 	{
 		change = 0;
-		i = 0;
+		i = -1;
 		while (map[++i + 1])
 		{
-			j = 0;
+			j = -1;
 			while (map[i][++j + 1])
 				if (map[i][j] == 'P')
 					change += rep_path(&map[i - 1][j], &map[i + 1][j],

@@ -12,6 +12,16 @@
 
 #include "../includes/so_long.h"
 
+char	**map_ok(char **map)
+{
+	if (!map[0])
+	{
+		free(map);
+		return (NULL);
+	}
+	return (map);
+}
+
 int	map_h(char **map)
 {
 	int	h;
@@ -78,5 +88,5 @@ char	**map_open(char *map_path)
 	}
 	map[i] = NULL;
 	close(fd);
-	return (map);
+	return (map_ok(map));
 }

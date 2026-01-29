@@ -35,7 +35,7 @@ int	load_invalid(t_game *game, char *path)
 	if (map_not_valid(map))
 	{
 		free_tab(map);
-		return (ft_putstr("Error\nInvalid maps\n"));
+		return (1);
 	}
 	free_tab(map);
 	game->map = map_open(path);
