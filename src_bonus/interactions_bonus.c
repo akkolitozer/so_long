@@ -39,3 +39,11 @@ int	cant_move_to(char **map, int i, int j)
 		return (1);
 	return (0);
 }
+
+int	enemy_cant_move_to(char **map, int i, int j)
+{
+	if (is_wall(map[i][j]) || is_invalid_exit(map, i, j) ||
+		is_valid_exit(map, i, j))
+		return (1);
+	return (0);
+}

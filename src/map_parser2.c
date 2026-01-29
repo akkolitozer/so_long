@@ -55,9 +55,7 @@ int	ce_reachable(char **map)
 	int	change;
 	int	i;
 	int	j;
-	int	count_c;
 
-	count_c = 0;
 	change = 1;
 	while (change)
 	{

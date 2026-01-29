@@ -49,6 +49,11 @@ typedef struct s_game
 	int		ey;
 	int		m;
 	int 	frame;
+	int 	pn;
+	int 	en;
+	int 	cn;
+	int		hn;
+	int		pec_error;
 	t_dir	p_dir;
 	t_dir	e_dir;
 	

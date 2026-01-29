@@ -20,7 +20,7 @@
 int		ft_putstr(char *str);
 char	*ft_strtrim(char *str, char c);
 void	ft_putnbr(int n);
-void	ft_putchar(char c);
+int		ft_putchar(char c);
 void	*ft_calloc(size_t count, size_t size);
 
 #endif 

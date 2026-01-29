@@ -46,30 +46,33 @@ int	closed_map(char **map)
 	return (1);
 }
 
-void	pec01_count(t_game *game)
+int	pec01(char **map)
 {
-	if (game->map[i][j] == 'P')
-			game->pn++;
-	else if (game->map[i][j] == 'E')
-			game->en++;
-	else if (game->map[i][j] == 'C')
-			game->cn++;
-	else if (game->map[i][j] != '1' && game->map[i][j] != '0')
-			game->pec_error = 1;
-}
+	int	var[5];
 
-void	pec01(t_game *game)
-{
-	int i;
-	int j;
-
-	i = -1;
-	while (game->map[++i])
+	var[0] = 0;
+	var[1] = 0;
+	var[2] = 0;
+	var[3] = -1;
+	while (map[++var[3]])
 	{
-		j = -1;
-		while (game->map[i][++j])
-			pec01_count(game);
+		var[4] = -1;
+		while (map[var[3]][++var[4]])
+		{
+			if (map[var[3]][var[4]] == 'P')
+				var[0]++;
+			else if (map[var[3]][var[4]] == 'E')
+				var[1]++;
+			else if (map[var[3]][var[4]] == 'C')
+				var[2]++;
+			else if (map[var[3]][var[4]] != '1' && map[var[3]][var[4]] != '0'
+				&& map[var[3]][var[4]] != 'H')
+				return (0);
+		}
 	}
+	if (var[0] != 1 || var[1] != 1 || var[2] < 1)
+		return (0);
+	return (var[2]);
 }
 
 int	rep_path(char *u, char *d, char *l, char *r)

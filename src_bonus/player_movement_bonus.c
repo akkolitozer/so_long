@@ -26,6 +26,8 @@ void	player_move_up(t_game *game)
 		{
 			if (game->map[i][j] == 'P' && !cant_move_to(game->map, i - 1, j))
 			{
+				if (game->map[i][j + 1] == 'H')
+					dead_handler(game);
 				(game->m)++;
 				ft_putnbr(game->m);
 				ft_putstr("\n");
@@ -53,6 +55,8 @@ void	player_move_down(t_game *game)
 		{
 			if (game->map[i][j] == 'P' && !cant_move_to(game->map, i + 1, j))
 			{
+				if (game->map[i][j + 1] == 'H')
+					dead_handler(game);
 				(game->m)++;
 				ft_putnbr(game->m);
 				ft_putstr("\n");
@@ -80,6 +84,8 @@ void	player_move_left(t_game *game)
 		{
 			if (game->map[i][j] == 'P' && !cant_move_to(game->map, i, j - 1))
 			{
+				if (game->map[i][j + 1] == 'H')
+					dead_handler(game);
 				(game->m)++;
 				ft_putnbr(game->m);
 				ft_putstr("\n");
@@ -107,6 +113,8 @@ void	player_move_right(t_game *game)
 		{
 			if (game->map[i][j] == 'P' && !cant_move_to(game->map, i, j + 1))
 			{
+				if (game->map[i][j + 1] == 'H')
+					dead_handler(game);
 				(game->m)++;
 				ft_putnbr(game->m);
 				ft_putstr("\n");
