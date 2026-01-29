@@ -68,7 +68,6 @@ void	get_p_pos(t_game *game)
 
 void	enemy_way_to_player(t_game *game)
 {
-	get_p_pos(game);
 	if (abs(game->px - game->ex) > abs(game->py - game->ey))
 	{
 		if (game->px < game->ex)

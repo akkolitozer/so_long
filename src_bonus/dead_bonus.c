@@ -14,6 +14,27 @@
 
 void	dead_handler(t_game *game)
 {
-	ft_putstr("Enemy caught you! Game Over!\n");
+	ft_putstr("Enemy caught you! Game Over! : ");
+	ft_putnbr(game->m);
+	ft_putchar('\n');
 	exit_success(game);
+}
+
+void	debug_map(t_game *game)
+{
+	int	i;
+
+	i = -1;
+	while (game->map[++i])
+	{
+		ft_putstr(game->map[i]);
+		ft_putchar('\n');
+	}
+}
+
+void	move_increase(t_game *game)
+{
+	game->m++;
+	ft_putnbr(game->m);
+	ft_putstr("\n");
 }

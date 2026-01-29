@@ -26,15 +26,15 @@ void	player_move_up(t_game *game)
 		{
 			if (game->map[i][j] == 'P' && !cant_move_to(game->map, i - 1, j))
 			{
-				if (game->map[i][j + 1] == 'H')
+				move_increase(game);
+				if (game->map[i - 1][j] == 'H')
 					dead_handler(game);
-				(game->m)++;
-				ft_putnbr(game->m);
-				ft_putstr("\n");
 				if (is_valid_exit(game->map, i - 1, j))
-					exit(0);
+					exit_success(game);
 				game->map[i][j] = '0';
 				game->map[i - 1][j] = 'P';
+				if (game->m % 2 == 0)
+					enemy(game);
 				return ;
 			}
 		}
@@ -55,15 +55,15 @@ void	player_move_down(t_game *game)
 		{
 			if (game->map[i][j] == 'P' && !cant_move_to(game->map, i + 1, j))
 			{
-				if (game->map[i][j + 1] == 'H')
+				move_increase(game);
+				if (game->map[i + 1][j] == 'H')
 					dead_handler(game);
-				(game->m)++;
-				ft_putnbr(game->m);
-				ft_putstr("\n");
 				if (is_valid_exit(game->map, i + 1, j))
-					exit(0);
+					exit_success(game);
 				game->map[i][j] = '0';
 				game->map[i + 1][j] = 'P';
+				if (game->m % 2 == 0)
+					enemy(game);
 				return ;
 			}
 		}
@@ -84,15 +84,15 @@ void	player_move_left(t_game *game)
 		{
 			if (game->map[i][j] == 'P' && !cant_move_to(game->map, i, j - 1))
 			{
-				if (game->map[i][j + 1] == 'H')
+				move_increase(game);
+				if (game->map[i][j - 1] == 'H')
 					dead_handler(game);
-				(game->m)++;
-				ft_putnbr(game->m);
-				ft_putstr("\n");
 				if (is_valid_exit(game->map, i, j - 1))
-					exit(0);
+					exit_success(game);
 				game->map[i][j] = '0';
 				game->map[i][j - 1] = 'P';
+				if (game->m % 2 == 0)
+					enemy(game);
 				return ;
 			}
 		}
@@ -113,15 +113,15 @@ void	player_move_right(t_game *game)
 		{
 			if (game->map[i][j] == 'P' && !cant_move_to(game->map, i, j + 1))
 			{
+				move_increase(game);
 				if (game->map[i][j + 1] == 'H')
 					dead_handler(game);
-				(game->m)++;
-				ft_putnbr(game->m);
-				ft_putstr("\n");
 				if (is_valid_exit(game->map, i, j + 1))
 					exit_success(game);
 				game->map[i][j] = '0';
 				game->map[i][j + 1] = 'P';
+				if (game->m % 2 == 0)
+					enemy(game);
 				return ;
 			}
 		}
@@ -130,6 +130,7 @@ void	player_move_right(t_game *game)
 
 void	player_movement(t_game *game, int keycode)
 {
+	get_p_pos(game);
 	if (keycode == 119)
 		player_move_up(game);
 	else if (keycode == 97)

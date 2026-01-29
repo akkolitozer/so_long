@@ -29,10 +29,7 @@ int	key_handler(int keycode, void *param)
 	game = (t_game *)param;
 	if (keycode == KEY_W || keycode == KEY_A || keycode == KEY_S || keycode == KEY_D)
 	{
-		game->frame++;
 		player_movement(game, keycode);
-		if (game->frame % 2 == 0)
-			enemy(game);
 		render_map(game);
 	}
 	else if (keycode == 65307)

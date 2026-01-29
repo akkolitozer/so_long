@@ -48,12 +48,6 @@ typedef struct s_game
 	int		ex;
 	int		ey;
 	int		m;
-	int 	frame;
-	int 	pn;
-	int 	en;
-	int 	cn;
-	int		hn;
-	int		pec_error;
 	t_dir	p_dir;
 	t_dir	e_dir;
 	
@@ -102,5 +96,8 @@ void	enemy(t_game *game);
 void	enemy_move_handler(t_game *game);
 void	render_enemy(t_game *game);
 void	dead_handler(t_game *game);
+void	debug_map(t_game *game);
+void	get_p_pos(t_game *game);
+void	move_increase(t_game *game);
 
 #endif
