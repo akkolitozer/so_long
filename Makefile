@@ -6,23 +6,23 @@
 #    By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/20 16:34:37 by hulescur          #+#    #+#              #
-#    Updated: 2026/01/28 15:13:17 by hulescur         ###   ########.fr        #
+#    Updated: 2026/02/01 15:09:30 by hulescur         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-LIBFT = libft/ft_putstr.c libft/ft_putnbr.c \
-		libft/ft_putchar.c libft/ft_calloc.c \
+LIBFT = libft/ft_putstr.c libft/ft_putnbr.c libft/ft_strdup.c \
+		libft/ft_putchar.c libft/ft_calloc.c libft/ft_strtrim.c
 
 GNL = 	gnl/get_next_line.c gnl/get_next_line_utils.c \
 
 SRCS =	$(LIBFT) $(GNL) src/main.c src/map_parser.c src/map_parser2.c \
-		src/map_open.c src/minilx_init.c src/ft_strtrim.c \
+		src/map_open.c src/minilx_init.c \
 		src/minilx_rendermap.c src/minilx_renderplayer.c \
 		src/player_movement.c src/interactions.c \
 		src/cleanup.c \
 
 SRCS_BONUS = $(LIBFT) $(GNL) \
-			src/main.c src/map_parser2.c src/map_open.c src/ft_strtrim.c \
+			src/main.c src/map_parser2.c src/map_open.c \
 			src/minilx_rendermap.c src/minilx_renderplayer.c src/cleanup.c \
 			src_bonus/dead_bonus.c src_bonus/enemy_moves_bonus.c \
 			src_bonus/enemy_bonus.c src_bonus/interactions_bonus.c \

@@ -6,7 +6,7 @@
 /*   By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 17:58:01 by hulescur          #+#    #+#             */
-/*   Updated: 2026/01/20 16:48:07 by hulescur         ###   ########.fr       */
+/*   Updated: 2026/02/01 14:54:36 by hulescur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include "../includes/so_long.h"
 
 int		ft_strlen(const char *s);
 char	*ft_strchr(const char *s, int c);

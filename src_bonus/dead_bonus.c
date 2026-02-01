@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dead.c                                             :+:      :+:    :+:   */
+/*   dead_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 14:58:28 by hulescur          #+#    #+#             */
-/*   Updated: 2026/01/28 15:00:26 by hulescur         ###   ########.fr       */
+/*   Updated: 2026/01/30 12:28:22 by hulescur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,14 @@ void	dead_handler(t_game *game)
 	exit_success(game);
 }
 
-void	debug_map(t_game *game)
+void	debug_map(char **map)
 {
 	int	i;
-
+	
 	i = -1;
-	while (game->map[++i])
+	while (map[++i])
 	{
-		ft_putstr(game->map[i]);
+		ft_putstr(map[i]);
 		ft_putchar('\n');
 	}
 }

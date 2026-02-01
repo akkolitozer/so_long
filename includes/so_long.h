@@ -6,7 +6,7 @@
 /*   By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 15:17:32 by hulescur          #+#    #+#             */
-/*   Updated: 2026/01/28 15:03:54 by hulescur         ###   ########.fr       */
+/*   Updated: 2026/01/30 12:28:55 by hulescur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ void	enemy(t_game *game);
 void	enemy_move_handler(t_game *game);
 void	render_enemy(t_game *game);
 void	dead_handler(t_game *game);
-void	debug_map(t_game *game);
+void	debug_map(char **map);
 void	get_p_pos(t_game *game);
 void	move_increase(t_game *game);
 

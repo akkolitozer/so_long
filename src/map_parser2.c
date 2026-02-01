@@ -6,7 +6,7 @@
 /*   By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 18:36:42 by hulescur          #+#    #+#             */
-/*   Updated: 2026/01/26 11:32:00 by hulescur         ###   ########.fr       */
+/*   Updated: 2026/02/01 15:07:48 by hulescur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int	check_exit(char **map)
 	while (map[++i + 1])
 	{
 		j = -1;
+		if (!map[i][j + 1])
+			return (0);
 		while (map[i][++j + 1])
 		{
 			if (map[i][j] == 'E')
@@ -41,6 +43,8 @@ int	check_all_c(char **map)
 	while (map[++i + 1])
 	{
 		j = -1;
+		if (!map[i][j + 1])
+			return (0);
 		while (map[i][++j + 1])
 		{
 			if (map[i][j] == 'C')
@@ -64,6 +68,8 @@ int	ce_reachable(char **map)
 		while (map[++i + 1])
 		{
 			j = -1;
+			if (!map[i][j + 1])
+				return (0);
 			while (map[i][++j + 1])
 				if (map[i][j] == 'P')
 					change += rep_path(&map[i - 1][j], &map[i + 1][j],

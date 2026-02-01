@@ -1,39 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/17 17:19:51 by hulescur          #+#    #+#             */
-/*   Updated: 2026/01/28 15:11:47 by hulescur         ###   ########.fr       */
+/*   Created: 2025/12/08 11:42:01 by hulescur          #+#    #+#             */
+/*   Updated: 2026/01/30 12:25:21 by hulescur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-char	*ft_strtrim(char *str, char c)
+char	*ft_strdup(const char *s1)
 {
-	char	*sc;
+	char	*dup;
 	int		i;
-	int		temp;
-	int		len;
-	int		start;
 
+	dup = (char *)malloc(sizeof(char) * (ft_strlen(s1) + 1));
+	if (!dup)
+		return (NULL);
 	i = 0;
-	len = 0;
-	start = 0;
-	while (str[i] && str[i] == c)
-		i++;
-	temp = i;
-	while (str[i] && str[i++] != c)
-		len++;
-	sc = malloc(sizeof(char) * (len + 1));
-	while (str[temp] && str[temp] != c)
+	while (s1[i])
 	{
-		sc[start++] = str[temp];
-		temp++;
+		dup[i] = s1[i];
+		i++;
 	}
-	sc[start] = 0;
-	return (sc);
+	dup[i] = '\0';
+	return (dup);
 }
