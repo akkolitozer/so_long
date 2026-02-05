@@ -6,11 +6,24 @@
 /*   By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 15:34:53 by hulescur          #+#    #+#             */
-/*   Updated: 2026/01/28 15:14:21 by hulescur         ###   ########.fr       */
+/*   Updated: 2026/02/02 16:42:37 by hulescur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+
+int	ber_file(char *path)
+{
+	int	len;
+
+	len = 0;
+	while (path[len])
+		len++;
+	if (len < 4 || path[len - 1] != 'r' || path[len - 2] != 'e'
+		|| path[len - 3] != 'b' || path[len - 4] != '.')
+		return (0);
+	return (1);
+}
 
 int	same_len(char **map)
 {

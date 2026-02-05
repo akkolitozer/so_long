@@ -6,7 +6,7 @@
 /*   By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 19:13:05 by hulescur          #+#    #+#             */
-/*   Updated: 2026/01/30 12:48:13 by hulescur         ###   ########.fr       */
+/*   Updated: 2026/02/02 16:44:18 by hulescur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ int	load_invalid(t_game *game, char *path)
 {
 	char	**map;
 
+	if (!ber_file(path))
+		return (ft_putstr("Error\nInvalid file type\n"));
 	map = map_open(path);
 	if (!map)
 		return (ft_putstr("Error\nInvalid path\n"));

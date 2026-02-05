@@ -6,7 +6,7 @@
 /*   By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 15:17:32 by hulescur          #+#    #+#             */
-/*   Updated: 2026/01/30 12:28:55 by hulescur         ###   ########.fr       */
+/*   Updated: 2026/02/02 16:44:40 by hulescur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,5 +99,6 @@ void	dead_handler(t_game *game);
 void	debug_map(char **map);
 void	get_p_pos(t_game *game);
 void	move_increase(t_game *game);
+int		ber_file(char *path);
 
 #endif
